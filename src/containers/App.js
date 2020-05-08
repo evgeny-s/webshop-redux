@@ -4,6 +4,7 @@ import App from "./../App";
 const mapStateToProps = state => {
   return {
     products: state.shop.products,
+    cartItems: state.shop.cartItems,
   }
 };
 const mapDispatchToProps = dispatch => {

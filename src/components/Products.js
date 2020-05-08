@@ -1,7 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function Products({products}) {
+function Products({products, addToCart}) {
+  function _addToCart(id, e) {
+    e.preventDefault();
+
+    addToCart(id);
+  }
+
   return (
     <div className='product-list'>
       {
@@ -11,7 +17,7 @@ function Products({products}) {
               <div className="card-body">
                 <h5 className="card-title">{product['product-name']}</h5>
                 <p className="card-text">{product['header-top-right-text']}</p>
-                <a href="#" className="btn btn-primary">Add to cart</a>
+                <a href="#" className="btn btn-primary" onClick={_addToCart.bind(this, product.id)}>Add to cart</a>
               </div>
           </div>
         ))
@@ -22,6 +28,7 @@ function Products({products}) {
 
 Products.propTypes = {
   products: PropTypes.array.isRequired,
+  addToCart: PropTypes.func.isRequired,
 };
 
 export default Products;

@@ -8,7 +8,12 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = dispatch => {
   return {
-
+    addToCart: (id) => dispatch({
+      type: 'SHOP/ADD_TOD_CART',
+      payload: {
+        id,
+      }
+    }),
   }
 };
 

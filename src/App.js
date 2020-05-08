@@ -1,4 +1,5 @@
 import React, {useEffect} from 'react';
+import PropTypes from 'prop-types';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
@@ -14,7 +15,7 @@ import MyCart from './components/MyCart';
 
 import data from './data/data';
 
-function App({loadProducts, products}) {
+function App({loadProducts, products, cartItems}) {
   useEffect(() => {
     loadProducts(data);
   }, []);
@@ -38,7 +39,7 @@ function App({loadProducts, products}) {
               <NavLink className='nav-link' activeClassName='active' to="/products">Products ({products.length})</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className='nav-link' activeClassName='active' to="/cart">My Cart</NavLink>
+              <NavLink className='nav-link' activeClassName='active' to="/cart">My Cart ({cartItems.length})</NavLink>
             </li>
           </ul>
         </div>
@@ -68,5 +69,9 @@ function App({loadProducts, products}) {
     </div>
   );
 }
+
+App.propTypes = {
+  cartItems: PropTypes.array,
+};
 
 export default App;
